@@ -395,6 +395,7 @@ def main():
                             <span style="color: #155724;">Prediction completed!</span>
                         </div>
                         """, unsafe_allow_html=True)
+                        
                         # Summary
                         st.markdown("""
                         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -429,6 +430,7 @@ def main():
 
                         fig = px.pie(values=sentiment_counts.values, names=labels, title="Sentiment Distribution")
                         fig.update_traces(marker=dict(colors=colors), textfont_size=18)
+                        fig.update_layout(legend=dict(font=dict(size=16)))
 
                         st.plotly_chart(fig, use_container_width=True)
 
