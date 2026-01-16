@@ -256,21 +256,23 @@ def main():
                 sentiment = result['prediction']
                 confidence = result['confidence']
                 
-                # Determine color and emoji
                 sentiment_lower = sentiment.lower()
                 if 'positif' in sentiment_lower or 'positive' in sentiment_lower:
                     box_class = 'positive'
+                    sentiment_display = 'POSITIVE'
                     emoji = '<span class="material-icons">sentiment_satisfied_alt</span>'
                 elif 'negatif' in sentiment_lower or 'negative' in sentiment_lower:
                     box_class = 'negative'
+                    sentiment_display = 'NEGATIVE'
                     emoji = '<span class="material-icons">sentiment_dissatisfied</span>'
                 else:
                     box_class = 'neutral'
+                    sentiment_display = 'NEUTRAL'
                     emoji = '<span class="material-icons">sentiment_neutral</span>'
                 
                 st.markdown(f"""
                     <div class="sentiment-box {box_class}">
-                        <h2>{emoji} {sentiment.upper()}</h2>
+                        <h2>{emoji} {sentiment_display}</h2>
                         <p style="font-size: 1.2rem;">Confidence: {confidence:.2%}</p>
                     </div>
                 """, unsafe_allow_html=True)
